@@ -4,7 +4,7 @@ al copiar el repo cambias a tu rama
 git checkout Marcos
 
 el commit es normal, en el push cambia
-git push origin <nombre de tu rama>
+git push origin Marcos
 
 ya cuando esten bien los cambios los fucionamos en el master
 

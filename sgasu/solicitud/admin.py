@@ -1,5 +1,9 @@
 from django.contrib import admin
-from .models import Solicitudes
+from .models import Request
 
 # Register your models here.
-admin.site.register(Solicitudes)
+class RequestAdmin(admin.ModelAdmin):
+    list_display = ['reason', 'name', 'school_enrollment', 'date']
+    list_filter = ['date']
+
+admin.site.register(Request, RequestAdmin)

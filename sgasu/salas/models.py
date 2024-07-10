@@ -9,7 +9,7 @@ class Edificio(models.Model):
     nombre = models.CharField(max_length=15)
     descripcion = models.CharField(max_length=50)
 
-class Salon(models.Model):
+class Salones(models.Model):
     nombre = models.CharField(max_length=15)
     moviliario = models.CharField(max_length=15)
     tipo = models.ForeignKey(TipoSala, on_delete=models.CASCADE)

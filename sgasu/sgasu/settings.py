@@ -32,6 +32,7 @@ ALLOWED_HOSTS = []
 
 INSTALLED_APPS = [
     'salas.apps.SalasConfig',
+    'solicitud.apps.SolicitudConfig',
 
     'django.contrib.admin',
     'django.contrib.auth',

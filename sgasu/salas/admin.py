@@ -1,8 +1,17 @@
 from django.contrib import admin
 
-from .models import Edificio, Salones, TipoSala
+from .models import Building, Classroom, RoomType
 # Register your models here.
 
-admin.site.register(Edificio)
-admin.site.register(Salones)
-admin.site.register(TipoSala)
+class BuildingAdmin(admin.ModelAdmin):
+    list_display = ['bg_name', 'bg_description']
+admin.site.register(Building, BuildingAdmin)
+
+
+class ClassroomAdmin(admin.ModelAdmin):
+    list_display = ['cm_name', 'furniture', 'cm_type', 'cm_description', 'manager']
+admin.site.register(Classroom, ClassroomAdmin)
+
+class RoomTypeAdmin(admin.ModelAdmin):
+    list_display = ['rm_type', 'rm_description']
+admin.site.register(RoomType, RoomTypeAdmin)

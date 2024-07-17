@@ -31,9 +31,14 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'salas.apps.SalasConfig',
+    'solicitud.apps.SolicitudConfig',
+    'solicitante.apps.SolicitanteConfig',
+    'dia.apps.DiaConfig',
+    'hora.apps.HoraConfig',
+
     'django.contrib.admin',
     'django.contrib.auth',
-    'salas.apps.SalasConfig',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',

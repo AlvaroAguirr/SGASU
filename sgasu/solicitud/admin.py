@@ -3,7 +3,7 @@ from .models import Request
 
 # Register your models here.
 class RequestAdmin(admin.ModelAdmin):
-    list_display = ['fk_name', 'fk_classroom', 'date']
+    list_display = ['applicant_name', 'classroom_name', 'date']
 
 
 admin.site.register(Request, RequestAdmin)

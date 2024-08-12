@@ -31,6 +31,7 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'rest_framework',
     'salas.apps.SalasConfig',
     'solicitud.apps.SolicitudConfig',
     'solicitante.apps.SolicitanteConfig',

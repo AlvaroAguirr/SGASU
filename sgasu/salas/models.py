@@ -1,5 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import User
+
+
 # Create your models here.
 class RoomType(models.Model):
     rm_type = models.CharField(verbose_name="Tipo", max_length=100)
@@ -29,6 +31,7 @@ class Classroom(models.Model):
     cm_type = models.ForeignKey(RoomType, on_delete=models.CASCADE, verbose_name="Tipo de sala")
     cm_description = models.CharField(verbose_name="Descripción", max_length=150)
     cm_manager = models.ForeignKey(User, on_delete=models.CASCADE, verbose_name="Administrador")
+    cm_roof = models.ForeignKey(Building, on_delete=models.CASCADE, related_name="edificio",default=1)
 
     def __str__(self):
         return f"{ self.cm_name } { self.cm_furniture } { self.cm_type } { self.cm_description } { self.cm_manager }"

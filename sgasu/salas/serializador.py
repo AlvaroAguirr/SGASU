@@ -18,6 +18,7 @@ class ClassroomSerializer(serializers.ModelSerializer):
     class Meta:
         model = Classroom
         fields  =(
+            'id',
             'cm_name',
             'cm_furniture',
             'cm_type',

@@ -32,6 +32,7 @@ ALLOWED_HOSTS = []
 
 INSTALLED_APPS = [
     'rest_framework',
+    'horario.apps.HorarioConfig',
     'salas.apps.SalasConfig',
     'solicitud.apps.SolicitudConfig',
     'solicitante.apps.SolicitanteConfig',

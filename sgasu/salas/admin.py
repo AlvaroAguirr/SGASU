@@ -1,6 +1,13 @@
 from django.contrib import admin
 
 from .models import Building, Classroom, RoomType
+from horario.models import Schedule
+
+class ScheduleInline(admin.TabularInline):  # Puedes usar admin.StackedInline si prefieres un diseño diferente
+    model = Schedule
+    extra = 1  # Cuántos formularios en blanco deseas agregar por defecto
+    fields = ['se_day', 'se_start_time', 'se_end_time','se_classroom']
+
 # Register your models here.
 
 class BuildingAdmin(admin.ModelAdmin):
@@ -9,9 +16,13 @@ admin.site.register(Building, BuildingAdmin)
 
 
 class ClassroomAdmin(admin.ModelAdmin):
+    inlines =[ScheduleInline]
     list_display = ['cm_name', 'cm_furniture', 'cm_type', 'cm_description', 'cm_manager']
 admin.site.register(Classroom, ClassroomAdmin)
 
 class RoomTypeAdmin(admin.ModelAdmin):
     list_display = ['rm_type', 'rm_description']
 admin.site.register(RoomType, RoomTypeAdmin)
+
+
+

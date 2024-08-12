@@ -9,7 +9,7 @@ admin.site.register(Building, BuildingAdmin)
 
 
 class ClassroomAdmin(admin.ModelAdmin):
-    list_display = ['cm_name', 'furniture', 'cm_type', 'cm_description', 'manager']
+    list_display = ['cm_name', 'cm_furniture', 'cm_type', 'cm_description', 'cm_manager']
 admin.site.register(Classroom, ClassroomAdmin)
 
 class RoomTypeAdmin(admin.ModelAdmin):

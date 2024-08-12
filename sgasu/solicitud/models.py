@@ -1,16 +1,16 @@
-from datetime import date
 from django.db import models
 
+from solicitante.models import Applicant
+from salas.models import Classroom
 
 # Create your models here.
 class Request(models.Model):
-    reason = models.CharField(verbose_name="Motivo", max_length=30)
-    name = models.CharField(verbose_name="Nombre",max_length=30)
-    school_enrollment= models.CharField(verbose_name="Matricula",max_length=30)
+    applicant_name = models.ForeignKey(Applicant, on_delete=models.CASCADE, verbose_name="Nombre solicitante")
+    classroom_name = models.ForeignKey(Classroom, on_delete=models.DO_NOTHING, verbose_name="Sala")
     date = models.DateTimeField(verbose_name= "Fecha")
     
     def __str__(self):
-        return f"{ self.reason } { self.name } { self.school_enrollment } { self.date }"
+        return f"{ self.applicant_name } { self.classroom_name } { self.date }"
     
     class Meta:
         verbose_name = 'Solicitud'

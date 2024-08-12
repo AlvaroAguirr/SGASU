@@ -25,33 +25,22 @@ class Building(models.Model):
 
 class Classroom(models.Model):
     cm_name = models.CharField(verbose_name="Nombre", max_length=15)
-    furniture = models.CharField(verbose_name="Moviliario", max_length=15)
+    cm_furniture = models.CharField(verbose_name="Moviliario", max_length=15)
     cm_type = models.ForeignKey(RoomType, on_delete=models.CASCADE, verbose_name="Tipo de sala")
     cm_description = models.CharField(verbose_name="Descripción", max_length=150)
-    manager = models.ForeignKey(User, on_delete=models.CASCADE, verbose_name="Administrador")
+    cm_manager = models.ForeignKey(User, on_delete=models.CASCADE, verbose_name="Administrador")
 
     def __str__(self):
-        return f"{ self.cm_name } { self.furniture } { self.cm_type } { self.cm_description } { self.manager }"
+        return f"{ self.cm_name } { self.cm_furniture } { self.cm_type } { self.cm_description } { self.cm_manager }"
     
     class Meta:
         verbose_name = "Salón"
         verbose_name_plural = "Salones"
 
-# class Encargado(models.Model):
-#     correo = models.CharField(max_length=30)
-#     nombre = models.CharField(max_length=30)
-#     telefono = models.IntegerField(max_length=10)
-#     id_encargado = models.BigAutoField(primary_key=True)
 
-# class Solicitante(models.Model):
-#     motivo = models.CharField(max_length=30)
-#     nombre = models.CharField(max_length=30)
-#     matricula = models.CharField(max_length=30)
+
 
 # class Horario(models.Model):
 #     fecha = models.DateField
 #     horas = models.IntegerField(max_length=1)
-
-# class Peticion(models.Model):
-#     recursos = models.CharField(max_length=30)
 

@@ -5,7 +5,7 @@ from django.contrib.auth.models import User
 # Create your models here.
 class RoomType(models.Model):
     rm_type = models.CharField(verbose_name="Tipo", max_length=100)
-    rm_description = models.CharField(verbose_name="Descripción", max_length=150)
+    rm_description = models.CharField(verbose_name="Descripción_tipo", max_length=150)
 
     def __str__(self):
         return f"{ self.rm_type } { self.rm_description }"

@@ -31,7 +31,7 @@ class Classroom(models.Model):
     cm_manager = models.ForeignKey(User, on_delete=models.CASCADE, verbose_name="Administrador")
 
     def __str__(self):
-        return f"{ self.cm_name } { self.cm_furniture } { self.cm_type } { self.cm_description } { self.cm_manager }"
+        return f"{ self.cm_name }"
     
     class Meta:
         verbose_name = "Salón"

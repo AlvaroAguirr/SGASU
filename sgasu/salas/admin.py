@@ -16,8 +16,9 @@ admin.site.register(Building, BuildingAdmin)
 
 
 class ClassroomAdmin(admin.ModelAdmin):
-    inlines =[ScheduleInline]
+    
     list_display = ['cm_name', 'cm_furniture', 'cm_type', 'cm_description', 'cm_manager']
+    filter_horizontal = ('horarios',)
 admin.site.register(Classroom, ClassroomAdmin)
 
 class RoomTypeAdmin(admin.ModelAdmin):

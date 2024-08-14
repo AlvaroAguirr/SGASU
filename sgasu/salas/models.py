@@ -1,5 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User
+from horario.models import Schedule
 
 
 # Create your models here.
@@ -32,7 +33,7 @@ class Classroom(models.Model):
     cm_description = models.CharField(verbose_name="Descripción", max_length=150)
     cm_manager = models.ForeignKey(User, on_delete=models.CASCADE, verbose_name="Administrador")
     cm_roof = models.ForeignKey(Building, on_delete=models.CASCADE, related_name="edificio",default=1)
-
+    horarios = models.ManyToManyField(Schedule, related_name="salones")
     def __str__(self):
         return f"{ self.cm_name } { self.cm_furniture } { self.cm_type } { self.cm_description } { self.cm_manager }"
     

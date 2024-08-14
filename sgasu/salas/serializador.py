@@ -2,8 +2,7 @@ from rest_framework import serializers
 
 from .models import Classroom, RoomType, Building
 
-
-
+from horario.serializador import ScheduleSerializer
 class RoomTypeSerializer(serializers.ModelSerializer):
     class Meta:
         model = RoomType
@@ -17,23 +16,27 @@ class RoomTypeSerializer(serializers.ModelSerializer):
 
 class ClassroomSerializerToCreate(serializers.ModelSerializer):
     
+    
+    class Meta:
+        model = Classroom
+        fields  =(
+            'id',
+            'cm_name',
+            'cm_furniture',
+            'cm_type',
+            'cm_description',
+            'cm_manager',
+            'cm_roof',
+            
+        )
+
+ 
 
     
-    class Meta:
-        model = Classroom
-        fields  =(
-            'id',
-            'cm_name',
-            'cm_furniture',
-            'cm_type',
-            'cm_description',
-            'cm_manager',
-            'cm_roof'
-        )
 class ClassroomSerializer(serializers.ModelSerializer):
     
+    horarios=ScheduleSerializer(many=True)
     cm_type=RoomTypeSerializer()
-    
     class Meta:
         model = Classroom
         fields  =(
@@ -43,7 +46,11 @@ class ClassroomSerializer(serializers.ModelSerializer):
             'cm_type',
             'cm_description',
             'cm_manager',
-            'cm_roof'
+            'cm_roof',
+            'horarios'
+
+            
+            
         )
 
     def update(self, instance, validated_data):
@@ -65,6 +72,9 @@ class ClassroomSerializer(serializers.ModelSerializer):
 
         instance.save()
         return instance
+    
+
+
 
 
 class BuildingSerializer(serializers.ModelSerializer):

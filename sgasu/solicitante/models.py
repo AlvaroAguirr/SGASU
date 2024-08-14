@@ -8,7 +8,7 @@ class Applicant(models.Model):
     at_school_enrollment= models.CharField(verbose_name="Matricula",max_length=30)
 
     def __str__(self):
-        return f" { self.at_name } { self.at_reason } { self.at_school_enrollment } "
+        return f" { self.at_name }"
     
     class Meta:
         verbose_name = 'Solicitante'

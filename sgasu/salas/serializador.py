@@ -79,12 +79,12 @@ class ClassroomSerializer(serializers.ModelSerializer):
 
 class BuildingSerializer(serializers.ModelSerializer):
 
-    Salones = ClassroomSerializer(many=True, source='edificio')
+    salones = ClassroomSerializer(many=True, source='edificio')
     class Meta:
         model = Building
         fields  =(
              'id',
              'bg_name',
              'bg_description',
-             'Salones',
+             'salones',
         )

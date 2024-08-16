@@ -1,7 +1,16 @@
-from .serializador import RequestSerializer
+from .serializador import RequestSerializer, RequestSerializer2
 from  .models import Request
 
-from rest_framework.generics import ListAPIView
+from rest_framework.generics import (
+
+ListAPIView,
+    CreateAPIView,
+    RetrieveAPIView,
+    DestroyAPIView,
+    UpdateAPIView,
+    RetrieveUpdateAPIView
+    )
+
 
 class PeticionListApi(ListAPIView):
     serializer_class =RequestSerializer
@@ -9,4 +18,21 @@ class PeticionListApi(ListAPIView):
         return Request.objects.all()
     
 
-# Create your views here.
+    
+class peticionCreateApi(CreateAPIView):
+    serializer_class=RequestSerializer2
+
+class peticionDetailApi(RetrieveAPIView):
+    serializer_class=RequestSerializer
+    queryset=Request.objects.filter()
+
+
+class peticionDeleteApi(DestroyAPIView):
+    serializer_class=RequestSerializer
+    queryset=Request.objects.filter()
+
+
+
+class peticionModificar(RetrieveUpdateAPIView):
+    queryset= Request.objects.all()
+    serializer_class=RequestSerializer

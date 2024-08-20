@@ -3,6 +3,7 @@ from rest_framework import serializers
 from .models import Classroom, RoomType, Building
 
 from horario.serializador import ScheduleSerializer
+from solicitud.serializador import RequestSerializer2
 class RoomTypeSerializer(serializers.ModelSerializer):
     class Meta:
         model = RoomType
@@ -13,6 +14,13 @@ class RoomTypeSerializer(serializers.ModelSerializer):
         )
 
 
+class BuildingSerializerTosee(serializers.ModelSerializer):
+
+    class Meta:
+        model = Building
+        fields  =(
+             'bg_name',
+        )
 
 class ClassroomSerializerToCreate(serializers.ModelSerializer):
     
@@ -34,8 +42,9 @@ class ClassroomSerializerToCreate(serializers.ModelSerializer):
 
     
 class ClassroomSerializer(serializers.ModelSerializer):
-    
-    horarios=ScheduleSerializer(many=True)
+    reservacion=RequestSerializer2(many=True,source='salonespedi')
+    cm_roof=BuildingSerializerTosee()
+  #  horarios=ScheduleSerializer(many=True)
     cm_type=RoomTypeSerializer()
     class Meta:
         model = Classroom
@@ -47,7 +56,8 @@ class ClassroomSerializer(serializers.ModelSerializer):
             'cm_description',
             'cm_manager',
             'cm_roof',
-            'horarios'
+            'horarios',
+            'reservacion'
 
             
             

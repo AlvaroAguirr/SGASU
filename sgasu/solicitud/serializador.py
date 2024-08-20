@@ -1,6 +1,6 @@
 from rest_framework import serializers
 
-from .models import  Request
+from solicitud.models import  Request
 
 
 class RequestSerializer(serializers.ModelSerializer):
@@ -8,14 +8,21 @@ class RequestSerializer(serializers.ModelSerializer):
         model=Request
         fields=('__all__')
 class RequestSerializer2(serializers.ModelSerializer):
+
+    
     class Meta:
         model=Request
         fields=(
+            'id',
+            'rt_descripcion',
+            'rt_matricula',
             'applicant_name',
             'rt_objetos',
             'classroom_name',
+            'rt_dia',
             'rt_horario',
-            'request_time'
+            'request_time',
+            'rt_horafin',
             )
     def validate(self, data):
         """
@@ -33,9 +40,9 @@ class RequestSerializer2(serializers.ModelSerializer):
         return data
     
     def to_representation(self, instance):
-        # Convertir la cadena separada por comas de vuelta a una lista para la respuesta
+        # Simplemente retorna la lista tal como está
         ret = super().to_representation(instance)
-        ret['rt_objetos'] = instance.rt_objetos.split(',') if instance.rt_objetos else []
+        ret['rt_objetos'] = instance.rt_objetos  # No necesitas usar split()
         return ret
 
     def to_internal_value(self, data):
